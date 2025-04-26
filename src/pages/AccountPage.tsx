@@ -5,6 +5,7 @@ import { TipContract } from '../lib/TipContract';
 import { ethersProvider } from '../lib/ethersProvider';
 import { DepositModal } from '../components/DepositModal';
 import { RegisterModal } from '../components/RegisterModal';
+import { WithdrawModal } from '../components/WithdrawModal';
 
 interface IdentifierBalance {
   identifier: string;
@@ -16,6 +17,7 @@ export function AccountPage() {
   const [identifierBalances, setIdentifierBalances] = useState<IdentifierBalance[]>([]);
   const [isDepositModalOpen, setIsDepositModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isWithdrawModalOpen, setIsWithdrawModalOpen] = useState(false);
   const [signer, setSigner] = useState<ethers.Signer | null>(null);
   const [isManagerOrOwner, setIsManagerOrOwner] = useState(false);
 
@@ -153,7 +155,7 @@ export function AccountPage() {
         </button>
         
         <button 
-          onClick={() => {/* Will handle modal */}}
+          onClick={() => setIsWithdrawModalOpen(true)}
           className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
         >
           Withdraw
@@ -184,6 +186,12 @@ export function AccountPage() {
           <DepositModal
             isOpen={isDepositModalOpen}
             onClose={() => setIsDepositModalOpen(false)}
+            onSuccess={refreshBalances}
+            signer={signer}
+          />
+          <WithdrawModal
+            isOpen={isWithdrawModalOpen}
+            onClose={() => setIsWithdrawModalOpen(false)}
             onSuccess={refreshBalances}
             signer={signer}
           />
