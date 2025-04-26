@@ -6,6 +6,16 @@ pragma solidity ^0.8.28;
 /// @notice This contract provides facilities for a manager to handle tips in a 
 ///         social media application.
 contract Tip {
+    // Add reentrancy guard
+    bool private locked;
+    
+    modifier nonReentrant() {
+        require(!locked, "Reentrant call");
+        locked = true;
+        _;
+        locked = false;
+    }
+
     address payable public owner;
     address[] public managers;
 
@@ -142,19 +152,22 @@ contract Tip {
     /// @dev Only callable by the registered wallet, requires withdraw fee
     /// @param identifier The identifier to withdraw from
     /// @param amount The amount to withdraw
-    function withdraw(bytes32 identifier, uint256 amount) public payable {
+    function withdraw(bytes32 identifier, uint256 amount) public payable nonReentrant {
         require(msg.value >= withdrawFee, "Insufficient withdraw fee");
-        feesPaid += msg.value;
         require(wallets[identifier] == msg.sender, "You aren't the registered wallet!");
 
         uint256 balance = balances[identifier];
         require(balance >= amount, "Insufficient balance");
 
+        // Update state before external calls (checks-effects-interactions pattern)
         balances[identifier] -= amount;
+        feesPaid += msg.value;
 
         emit Withdrawal(balance, identifier, wallets[identifier], block.timestamp);
 
-        wallets[identifier].transfer(amount);
+        // Use call instead of transfer
+        (bool success, ) = wallets[identifier].call{value: amount}("");
+        require(success, "Transfer failed");
     }
 
     /// @notice Removes a manager from the contract
@@ -205,10 +218,13 @@ contract Tip {
 
     /// @notice Collects accumulated fees
     /// @dev Only callable by contract owner
-    function collectFees() public {
+    function collectFees() public nonReentrant {
         require(msg.sender == owner, "You aren't the contract owner!");
-        owner.transfer(feesPaid);
+        uint256 amount = feesPaid;
         feesPaid = 0;
+        
+        (bool success, ) = owner.call{value: amount}("");
+        require(success, "Transfer failed");
     }
 
     /// @notice Gets the current deposit fee
