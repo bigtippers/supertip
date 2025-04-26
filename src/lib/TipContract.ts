@@ -98,4 +98,24 @@ export class TipContract {
     async getOwner(): Promise<string> {
         return await this.contract.owner();
     }
+
+    async isManager(address: string): Promise<boolean> {
+        const managersList: string[] = [];
+        let i = 0;
+        try {
+            while (true) {
+                const manager = await this.contract.managers(i);
+                managersList.push(manager);
+                i++;
+            }
+        } catch (e) {
+            // Array end reached
+        }
+        return managersList.includes(address);
+    }
+
+    async isOwner(address: string): Promise<boolean> {
+        const owner = await this.contract.owner();
+        return owner.toLowerCase() === address.toLowerCase();
+    }
 }
