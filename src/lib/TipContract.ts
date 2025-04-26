@@ -31,9 +31,8 @@ export class TipContract {
         await tx.wait();
     }
 
-    async withdraw(identifier: BytesLike, amount: BigNumberish): Promise<void> {
-        const withdrawFee = await this.contract.getWithdrawFee();
-        const tx = await this.contract.withdraw(identifier, amount, { value: withdrawFee });
+    async withdraw(identifier: BytesLike, amount: BigNumberish, options?: { value: BigNumberish }): Promise<void> {
+        const tx = await this.contract.withdraw(identifier, amount, options || {});
         await tx.wait();
     }
 
