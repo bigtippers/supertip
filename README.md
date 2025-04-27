@@ -40,7 +40,7 @@ flows to those who truly deserve it.
 ## Screenshots
 
 ### WebUI View for Manager on app.bigtippers.net
-![Manager WebUI View](https://github.com/user-attachments/assets/00fcfd26-e8de-4cb4-a46a-5cc0af3109fe)
+![Manager WebUI View](https://github.com/user-attachments/assets/00fcfd26-e8de-4cb4-a46a-5cc0af3109fe =100x)
 
 ## Technical Details
 
