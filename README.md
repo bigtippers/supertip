@@ -41,89 +41,91 @@ flows to those who truly deserve it.
 
 <img width="757" alt="Screenshot 2025-04-27 at 7 40 02 AM" src="https://github.com/user-attachments/assets/9035fe49-de3c-4a48-bab9-cb5f180936c9" />
 
-Users interact through the web UI
-Social media interactions are processed by the bot
-All financial transactions are handled by the smart contract
+Users primarily interact through social media interactions. To withdraw or deposit, they need to use the [Web UI](https://app.bigtippers.net).
+All User social media interactions are processed by the Monitor Bot, and all financial transactions and wallet associations are handled by the smart contract. 
+
+Layout:
+- `src` the Web UI.
+- `bot` the bot code.
+- `solidity` smart contract code.
 
 ### app.bigtippers.net UI
 
-A React application using Vite, React Router, and Tailwind CSS
+The [Web UI](https://app.bigtippers.net) is a Vite app using react-router and tailwindcss. The app has two main pages:
 
-Has two main pages:
+1. `src/pages/HomePage.tsx`: Handles wallet connection and initial user interaction
+2. `src/pages/AccountPage.tsx`: Manages account operations with modals for deposit, withdraw, register, and tip actions. There is also an admin panel visible by managers.
 
-HomePage: Handles wallet connection and initial user interaction
+To interact with the Asset Hub blockchain smart contract, we use ethers.js with the following configuration:
 
-AccountPage: Manages account operations with modals for deposit, withdraw, register, and tip actions
+```
+{
+            chainId: chainIdHex,
+            chainName: "Asset-Hub Westend Testnet",
+            nativeCurrency: {
+              name: "Westend",
+              symbol: "WND",
+              decimals: 18
+            },
+            rpcUrls: ["https://westend-asset-hub-eth-rpc.polkadot.io"],
+            blockExplorerUrls: ["https://blockscout-asset-hub.parity-chains-scw.parity.io"]
+}
+```
 
-Uses ethers.js to interact with the Westend Asset Hub blockchain
+Special care is taken to ensure the user's Metamask-compatible wallet is on the right network. 
+We also use a responsive design with both light/dark mode support, but have only tested the dark mode version extensively.
 
-Responsive design with both light/dark mode support
+To deploy this app, we use Netlify with automatic build processes. Because we use a smart contract, we include compiling the smart contracts before building the frontend in that process using a `prebuild` command. The rest of the build process follows the standard `build` -> `deploy` strategy.
 
-The project appears to be set up for deployment on Netlify with automatic build processes that include compiling the smart contracts before building the frontend.
+Layout:
+- `src/lib`, Library code.
+- `src/pages`, main pages.
+- `src/components`, modals and other UI widgets.
 
-Initial Wallet Connection ( src/lib/ethersProvider.ts):
-src/lib
-import { BrowserProvider } from "ethers";
-export const ethersProvider = window.ethereum ? new BrowserProvider(window.ethereum) : null;
-Wallet Connection Flow ( src/pages/HomePage.tsx):
-Checks for MetaMask presence
-Switches to Asset-Hub Westend Testnet (chainId: 420420421)
-Adds the network if not present
-Requests account access
-Navigates to account page on success
-Account Operations ( src/pages/AccountPage.tsx):
-Initializes signer: const signer = await ethersProvider.getSigner()
-Fetches wallet balance: ethersProvider.getBalance(address)
-Loads identifier balances from contract
-Manages multiple modal components for different operations
-Contract Interactions through modals:
-Deposit ( src/components/DepositModal.tsx):
-
-Loads user's identifiers
-Converts amounts to Wei: ethers.parseEther(amount)
-Calls contract's deposit function with fees
-Withdraw ( src/components/WithdrawModal.tsx):
-
-Loads available identifiers
-Converts identifier to bytes32: ethers.encodeBytes32String(selectedIdentifier)
-Handles withdrawal with fees
-Register ( src/components/RegisterModal.tsx):
-
-Validates wallet address: ethers.isAddress(walletAddress)
-Converts identifier to bytes32
-Registers identifier-wallet mapping
-Tip ( src/components/TipModal.tsx):
-
-Loads sender's identifiers
-Converts both identifiers to bytes32
-Processes tip with amount in Wei
-
+The overall design of the WebUI is a simple wallet with Withdraw, Deposit, and Tip functions. We had planned to permit login via OAUTH on Frequency and Bluesky, but they required a lot of extra infrastructure that was not feasible to set up. This exposed a hole in our expectations that the web apps themselves would forward any proofs of identity to us and NOT our infrastructure. We were surprised to discover that both Frequency and Bluesky have webhooks that appear to require server-side processing first, and both included language that implied exposing that to the client was a security or privacy concern!
 
 ### Monitor Bot
 
-In the `bot` folder.
+The monitor is a Bluesky bot that monitors mentions for tip commands. It's key functionalities include:
+1. Watching for `/tip [amount` commands in mentions
+2. Processing `/register [wallet]` commands for wallet registration
 
-A Bluesky bot that monitors mentions for tip commands
-Key functionalities:
-Watches for /tip [amount] commands in mentions
-Processes /register [wallet] commands for wallet registration
-Automatically marks notifications as read
-Implements robust error handling and auto-recovery
-Uses pagination to handle multiple pages of notifications
-Connects to both Bluesky API and the smart contract
-Runs continuously with automatic restart capability via start.sh
+It also automatically marks notifications as read implements robust error handling and auto-recovery as a long-running process.
+For large numbers of notifications, it uses pagination. It connects to both the BlueSky API and the Smart Contract. It holds
+a private key of a manager so it can process tips and register wallets to users.
+
+A number of additional functions were planned:
+1. `/pool [amount] [type] [timeout]` to incentivize interaction on a thread. The `type` would control if payouts were based on likes by
+    the owner, total likes, or some other system.
+3. `/letitrain [amount] [type]` which gives out tips to anyone who interacts with a post or via other rules controlled by `type`.
+4. `/challenge [amount] [type]` A payout that only happens when a certain challenge is met (e.g., # of likes).
+
+For obvious reasons of time, we kept it simple. We think it is pretty straighforward how one might implement these given the existing functionality. 
+
+Right now the Monitor Bot validates user identities by receiving notifications of messages and the smart contracts privileges them to 
+make wallet to DID connections (i.e., semi-trusted manager model). Our original plan was to do a full DID signature check, which is 
+entirely possible but which did not have sufficient documentation or examples to do in the timeframe of a hackathon given the 
+complexity of our smart contract. We also had planned to make the DID associations private but decided to punt on that for usability for now. 
+
+The bot itself was the most challenging component to build. The tooling for monitoring was not well documented and included subtle bugs, 
+and we spent over 6 hours resolving an issue where the monitor would authenticate then tell us we no longer had a proper access token.
 
 ### Smart Contract Details
 
-Manages the core tipping functionality on the Westend Asset Hub chain
-Key features:
-Maps social media identifiers to wallet addresses
-Handles deposits and withdrawals with configurable fees
-Supports tipping between users
-Role-based access control (owner and managers)
-Security features like reentrancy protection
-Deployed on Westend Asset Hub (chainId: 420420421)
-Includes comprehensive event logging for transactions
+We believe, except for signature checking, that the `Tip.sol` smart contract can be considered fully featured, with the following functionality:
+1. Maps social media DIDs to wallet addresses AND reverse maps wallet address to 1 or more social media DIDs.
+2. Handles deposits with a deposit fee and withdrawals with a withdrawal fee, all of which can be collected by the owner.
+3. Supports tipping between users directly as well as via the `owner` and `manager` roles.
+4. Role-based access control (`owner` and one or more `managers`).
+5. Ability to add and remove `managers` and ability to transfer ownership.
+6. Ability for users to transfer to new wallets. Managers lose the ability to set wallet mappings after a user asserts ownership.
+7. Proper security features like reentrancy protection.
+8. Comprehensive event emissions for all important transactions.
+
+We deployed on the Westend Asset Hub (chainId: 420420421) via the REMIX client provided by polkadot. As stated the key feature missing is a signature check. 
+We can implement that by adding a single function, `registerWithBlueSky` function which performs that check. We believe it is possible to perform the check
+using the existing built-ins precompiles and, given the superior efficient of the PolkaVM system, that our implementation will likely be as cheap or cheaper 
+that most other EVM chains (and definitely cheaper than other chains of similar levels of decentralization!). 
 
 ## Presentation
 
