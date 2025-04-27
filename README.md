@@ -39,6 +39,9 @@ flows to those who truly deserve it.
 
 ## Screenshots
 
+### WebUI View for Manager on app.bigtippers.net
+![Manager WebUI View](https://github.com/user-attachments/assets/00fcfd26-e8de-4cb4-a46a-5cc0af3109fe)
+
 ## Technical Details
 
 <img width="757" alt="Screenshot 2025-04-27 at 7 40 02 AM" src="https://github.com/user-attachments/assets/9035fe49-de3c-4a48-bab9-cb5f180936c9" />
