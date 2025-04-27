@@ -1,0 +1,28 @@
+{
+  "name": "bsky-mention-watcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/bot/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/bot/index.js",
+    "dev": "tsc -w & node --watch dist/bot/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@atproto/api": "^0.15.5",
+    "dotenv": "^16.5.0",
+    "ethers": "^6.9.0",
+    "node-http-interceptor": "^0.3.0",
+    "node-request-interceptor": "^0.6.3",
+    "npm": "^11.3.0",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.2"
+  }
+}
