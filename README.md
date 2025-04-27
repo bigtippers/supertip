@@ -2,11 +2,36 @@
 
 This is the source repository for the April 2025 Harvard EasyA Hackathon submission of the Supertip project by the Bigtippers.
 
-Supertip brings the proposed [open tipping tokens protocol](https://github.com/degen-token/DIPs/blob/main/dip-0002.md) to **<u>any social media supporting decentralized identities</u>**. 
+Supertip brings tipping token functionality to **<u>any social media supporting decentralized identities</u>** (DIDs). 
+Tipping tokens allow users to send small "tips" in the token currency to their favorite creators, 
+allowing for micropayments and providing monetization options for creators beyond those provided by the traditional advertising model. 
+Tipping creates a more rich and interactive experience for audiences by creating direct financial connections and incentives with creators.
 
-Bluesky Use Case
+Unlike platform-specific solutions, Supertip works across the growing ecosystem of decentralized social networks, 
+including [Bluesky](https://bsky.app) and [Frequency](https://frequency.xyz). Inspired by the innovative
+[open tipping tokens protocol](https://github.com/degen-token/DIPs/blob/main/dip-0002.md), our implementation extends these 
+capabilities to create a unified tipping experience regardless of where content appears.
 
-Tipping on Frequency? (future?)
+Supertip keeps users *inside of their own ecosystem*, using replies and direct messages inside of the apps they already
+know and love to send tips and run tipping campaigns. Our approach avoids the "activation energy" problem entirely for users to 
+participate. They only need to use specialized interfaces to fund and withdraw from their tipping accounts.
+
+DIDs are the linchpin that makes our approach viable. They enable a trust model where verification does not depend on 
+centralized authorities - instead, a cryptographic proof can be independently verified by anyone. This independent verification
+is extended directly to a smart contract in our model. Allowing users to control ownership and secure their tipping pools even without
+a pre-established cryptographic wallet.
+
+In our implementation, we used Polkadot's smart contract functionality to integrate with Bluesky, with plans for Frequency that fell short.
+The demo shows the entire UX from tipping someone to registering a wallet and withdrawing funds, with additional UX (tipping pools, automated rewards distributions, etc)
+being relatively straightforward to implement in the current model without changing the underlying smart contract as currently implemented.
+
+Our smart contract is designed to be extended to work with different types of DIDs by adding a registration function for each 
+different type of DID. The contract lazily maps those DIDs to crypto wallets when users if users choose to deposit or withdraw funds. Because both
+Bluesky and Frequency have similar DID functionalities, the path to complete full signature verification is similarly direct.
+
+We believe that Supertip can help creators build sustainable income streams directly from their most engaged fans that eliminate all middlement,
+while audiences gain new ways to recognize and reward exceptional content. Supertip builds a more connected, creator-friendly web where value
+flows to those who truly deserve it.
 
 ## Demo Video
 
@@ -54,7 +79,7 @@ Deployed (via REMIX): [https://blockscout-asset-hub.parity-chains-scw.parity.io/
 
 2. [X] Be open source (and remain available as open source)
 
-Released under [AGPLv3.0 or later](https://github.com/bigtippers/supertip/blob/main/COPYING). 
+Released under [AGPLv3.0 or later](https://github.com/bigtippers/supertip/blob/main/LICENSE). 
 
 3. [X] Include a short summary (<150 chars)
 
@@ -62,7 +87,7 @@ Supertip brings token tipping to **<u>any social media supporting decentralized 
 
 See [Intro](#supertip) for more.
 
-4. [ ] Include a full description (the problems it solves, how Polkadot was used to achieve it)
+4. [X] Include a full description (the problems it solves, how Polkadot was used to achieve it)
 
 See [Intro](#supertip).
 
