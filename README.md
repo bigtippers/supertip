@@ -1,5 +1,4 @@
-
-/![supertip](https://github.com/user-attachments/assets/e05f27c8-06a6-4e13-a558-0c9cc7de7780)
+![supertip](https://github.com/user-attachments/assets/e05f27c8-06a6-4e13-a558-0c9cc7de7780)
 
 # SuperTip by the BigTippers
 
