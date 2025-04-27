@@ -105,8 +105,8 @@ A number of additional functions were planned:
 For obvious reasons of time, we kept it simple. We think it is pretty straighforward how one might implement these given the existing functionality. 
 
 Right now the Monitor Bot validates user identities by receiving notifications of messages and the smart contracts privileges them to 
-make wallet to DID connections (i.e., semi-trusted manager model). Our original plan was to do a full DID signature check, which is 
-entirely possible but which did not have sufficient documentation or examples to do in the timeframe of a hackathon given the 
+make wallet to DID connections (i.e., semi-trusted manager model). A full DID signature check requires additional work, which is 
+entirely possible but did not have sufficient documentation or examples to do in the timeframe of a hackathon given the 
 complexity of our smart contract. We also had planned to make the DID associations private but decided to punt on that for usability for now. 
 
 The bot itself was the most challenging component to build. The tooling for monitoring was not well documented and included subtle bugs, 
@@ -124,9 +124,10 @@ We believe, except for signature checking, that the `Tip.sol` smart contract can
 7. Proper security features like reentrancy protection.
 8. Comprehensive event emissions for all important transactions.
 
-We deployed on the Westend Asset Hub (chainId: 420420421) via the REMIX client provided by polkadot. As stated the key feature missing is a signature check. 
-We can implement that by adding a single function, `registerWithBlueSky` function which performs that check. We believe it is possible to perform the check
-using the existing built-ins precompiles and, given the superior efficient of the PolkaVM system, that our implementation will likely be as cheap or cheaper 
+We deployed on the Westend Asset Hub (chainId: 420420421) via the REMIX client provided by polkadot.  
+We can implement per network DID signature checks by adding a single function, e.g., `registerWithBlueSky` function 
+which performs that check. We believe it is possible to perform the check using the existing built-ins precompiles and, 
+given the superior efficient of the PolkaVM system, that our implementation will likely be as cheap or cheaper 
 that most other EVM chains (and definitely cheaper than other chains of similar levels of decentralization!). 
 
 ## Presentation
