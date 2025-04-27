@@ -153,10 +153,10 @@ that most other EVM chains (and definitely cheaper than other chains of similar 
 
 ## Presentation
 
-[Presentation Video Part 1](https://www.loom.com/share/b49a76a6b17e47bf93b5b6a47cd72ca0?sid=13a8dba5-b244-4e04-b1ee-00e28eef097f)
-[Presentation Video Part 2](https://www.loom.com/share/5b0c8134f5fe4e01b6fd7cec1ec1a5fa?sid=9a732f9b-29a9-427e-a625-307fe10d0685)
-[Presentation Video Part 3](https://www.loom.com/share/e29bbd4e74544383923a1c174f7b25e5?sid=77d41919-6dfc-4eae-988b-0d8e799e7ae2)
 
+[![Watch the video](https://img.youtube.com/vi/o78nPBvRyKk/maxresdefault.jpg)](https://youtu.be/o78nPBvRyKk)
+
+https://youtu.be/o78nPBvRyKk
 
 [Presentation Slides on Canva](https://www.canva.com/design/DAGlyma_LwA/wz8Ip1qao2xrSLXyuOOzUw/view?utm_content=DAGlyma_LwA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbcb4acd01b)
 
