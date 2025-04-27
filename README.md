@@ -39,8 +39,21 @@ flows to those who truly deserve it.
 
 ## Screenshots
 
+### Tipping!
+<img width="600" alt="Tipping" src="https://github.com/user-attachments/assets/4052390e-763b-4f9c-94cb-c37163f38d28" />
+
+### The Monitor Bot Seeing and Recording the Tip
+![photo_2025-04-27_09-42-34](https://github.com/user-attachments/assets/e6f5f8b9-2f42-48e2-9b55-4a53f15563f8)
+
+
 ### WebUI View for Manager on app.bigtippers.net
-![Manager WebUI View](https://github.com/user-attachments/assets/00fcfd26-e8de-4cb4-a46a-5cc0af3109fe=100px)
+<img width="175" alt="WebUI Manager View" src="https://github.com/user-attachments/assets/00fcfd26-e8de-4cb4-a46a-5cc0af3109fe" />
+
+### Deposit Workflow
+<img width="175" alt="WebUI Before Deposit" src="https://github.com/user-attachments/assets/81421b6b-f435-450e-8b8d-b50e013ad626" />
+<img width="175" alt="Deposit Screen" src="https://github.com/user-attachments/assets/6636a59f-88ff-40e9-82c3-558bba0b354f" />
+<img width="175" alt="Confirmation" src="https://github.com/user-attachments/assets/8ef0ff1c-9ad5-4abf-ac94-bf5636ab93bd" />
+<img width="175" alt="WebUI After Deposit" src="https://github.com/user-attachments/assets/680f84f0-ae30-4d00-ad8b-f5092639a21b" />
 
 ## Technical Details
 
