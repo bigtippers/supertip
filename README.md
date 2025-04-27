@@ -1,5 +1,31 @@
 # supertip
-Repo for the April 2025 Harvard EasyA Hackathon
+
+This is the source repository for the April 2025 Harvard EasyA Hackathon submission of the Supertip project by the Bigtippers.
+
+Supertip brings the proposed [open tipping tokens protocol](https://github.com/degen-token/DIPs/blob/main/dip-0002.md) to **<u>any social media supporting decentralized identities</u>**. 
+
+Bluesky Use Case
+
+Tipping on Frequency? (future?)
+
+## Demo Video
+
+## Screenshots
+
+## Technical Details
+
+### app.bigtippers.net UI
+
+### Monitor Bot
+
+### Smart Contract Details
+
+## Presentation
+
+[Presentation Video]()
+
+[Presentation Slides on Canva]()
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -13,62 +39,56 @@ Currently, two official plugins are available:
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-[Polkadot AI VSCode extension](https://dappforge.app)
 
-[Polkadot Discord](https://polkadot-discord.w3f.tools/) (make sure you select the builder role to get access to the right channels) | [How to build a smart contract for Polkadot](https://contracts.polkadot.io)
+# Submission requirements ✅-List
 
-[**Polkadot Hackathon Cheat Sheet**](https://github.com/polkadot-developers/hackathon-guide)
+1. [X] Be built with smart contracts on Polkadot Asset Hub
 
-[Download the EasyA App here and complete the Polkadot challenges to learn everything you need to start building](https://links.easya.io/links/iTLY)
+<img width="544" alt="Screenshot 2025-04-27 at 5 50 49 AM" src="https://github.com/user-attachments/assets/878c02ad-52e9-4c32-92ad-0f4ba06740df" />
 
-[Polkadot AI VSCode extension](https://dappforge.app)
+Contract Address: 0x888175972F6570894e7CA8F1cAe817047c9Ba835
 
-[Polkadot Discord](https://polkadot-discord.w3f.tools/) (make sure you select the builder role to get access to the right channels) | **You must attend** all the in-person workshops in the schedule to be eligible to enter this track. |
+Code: [Tip.sol](https://github.com/bigtippers/supertip/blob/main/solidity/contracts/Tip.sol)
 
-> **Judging** (don’t worry - it’s not scary at all! 😄)
-> 
-- **WHEN** | Demo day will be on Sunday (see schedule for precise timings).
-- **HOW** | Judging will be done in person on Sunday. If you entered the coding track, there are 2 phases of judging. First, you’ll show your project to the judges at their judging table (this is an informal opportunity for you to show your code to them). Second, **top projects will then be selected to present formally to everyone on stage!**
+Deployed (via REMIX): [https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0x888175972F6570894e7CA8F1cAe817047c9Ba835](https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0x888175972F6570894e7CA8F1cAe817047c9Ba835)
 
-- **PRESENTING (TECHNICAL TRACK)** | If you’re selected to present for the technical tracks, here’s how it will go:
-    - 20 seconds to connect your computer to the projector.
-    - 3 mins to present.
-    - 1 min for Q&A.
+2. [X] Be open source (and remain available as open source)
 
-If you go over time, points will be deducted from your team. Your time will start as soon as the last team has stopped presenting and has left the stage.
+Released under [AGPLv3.0 or later](https://github.com/bigtippers/supertip/blob/main/COPYING). 
 
-Simply complete this submission form: https://forms.gle/jyinTU8TPmGZdY137 
+3. [X] Include a short summary (<150 chars)
 
-> **Submission requirements ✅**
-> 
+Supertip brings token tipping to **<u>any social media supporting decentralized identities</u>**. 
 
-**Projects must:**
+See [Intro](#supertip) for more.
 
-1. Be built with smart contracts on Polkadot Asset Hub
+4. [ ] Include a full description (the problems it solves, how Polkadot was used to achieve it)
 
-Deployed: <INSERT SMART CONTRACT ADDRESS (Ideally with blockexplorer link.)
+See [Intro](#supertip).
 
-2. Be open source (and remain available as open source)
+5. [ ] Include a technical description (what SDKs were used, and what features of Polkadot made this uniquely possible)
 
-<Link to License.txt>
+See [Technical Details](#technical-details).
 
-3. Include a short summary (<150 chars)
+6. [ ] Include a link to the Canva slides used in the presentation (including a slide on your team, problem, solution etc). You must use Canva for your presentation (yes, this is a requirement).
 
-BLURB
+See [Presentation](#presentation)
 
-4. Include a full description (the problems it solves, how Polkadot was used to achieve it)
+7. [X] (For coding submissions) Have a custom (not boilerplate) smart contract on Polkadot Asset Hub (and committed to your GitHub repo). All of this must be fully-functioning, as evidenced in a demo video on your README (see point 8 below).
 
-Bluesky Use Case
 
-Tipping on Frequency? (future?)
+8. [ ] (For coding submissions) Include a clear README on your GitHub repo explaining how your project works. This README must include:
 
-5. Include a technical description (what SDKs were used, and what features of Polkadot made this uniquely possible)
+    1. [ ] A demo video - See [Demo Video](#demo-video)
 
-<INSERT STACK DESCRIPTION>
+    2. [ ] Screenshots of your UI - See [Screenshots](#screenshots)
 
-6. Include a link to the Canva slides used in the presentation (including a slide on your team, problem, solution etc). You must use Canva for your presentation (yes, this is a requirement).
+    3. [ ] Description of how your smart contract works - See [Smart Contract Details](#smart-contract-details)
 
-<INSERT LINK>
+    4. [ ] A video with audio (e.g. a Loom video [like this](https://youtu.be/ZLKR4zE1o6U?si=6na7139wlVNkmJRa)) explaining how your project works, how the GitHub repo is structured, a demo of everything working etc. This is vital, so that the judges can review your project properly. Make sure you explain clearly how you satisfied point 7 above. This is a great example of a winning Polkadot project’s README: https://github.com/jjjutla/melodot. Bonus points for if your video is well-edited! - See [Presentation](#presentation)
+
+    5. [X] Block explorer link for deployed smart contract on Asset Hub - Deployed (via REMIX): [https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0x888175972F6570894e7CA8F1cAe817047c9Ba835](https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0x888175972F6570894e7CA8F1cAe817047c9Ba835)
+
 
 - **PRESENTING STRUCTURE** | Follow this structure when presenting:
     1. First 30 seconds for each team member to introduce yourselves (which employer/university you’re from, which year, what you’re majoring in etc). **Make sure you have a team slide!**
@@ -89,19 +109,3 @@ Tipping on Frequency? (future?)
     - Feasibility: The practicality of implementing the solution and the clarity of the implementation plan.
 
 Technical:
-
-7. (For coding submissions) Have a custom (not boilerplate) smart contract on Polkadot Asset Hub (and committed to your GitHub repo). All of this must be fully-functioning, as evidenced in a demo video on your README (see point 8 below).
-
-8. (For coding submissions) Include a clear README on your GitHub repo explaining how your project works. This README must include:
-
-    1. A demo video
-
-    2. Screenshots of your UI
-
-    3. Description of how your smart contract works
-
-    4. A video with audio (e.g. a Loom video [like this](https://youtu.be/ZLKR4zE1o6U?si=6na7139wlVNkmJRa)) explaining how your project works, how the GitHub repo is structured, a demo of everything working etc. This is vital, so that the judges can review your project properly. Make sure you explain clearly how you satisfied point 7 above. This is a great example of a winning Polkadot project’s README: https://github.com/jjjutla/melodot. Bonus points for if your video is well-edited!
-
-    5. Block explorer link for deployed smart contract on Asset Hub
-
-Please make sure you follow the above requirements very carefully. If you do not satisfy them, you will not be eligible for a guaranteed prize.
