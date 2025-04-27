@@ -34,17 +34,6 @@ export const agent = new AtpAgent({
   }
 });
 
-// Save the original XRPC call method
-const originalXrpcCall = agent.api.xrpc.call;
-
-// Replace with a version that logs headers
-agent.api.xrpc.call = async function(...args) {
-  console.log('🔍 XRPC Call Headers:', JSON.stringify(args));
-  
-  // Call the original method
-  return originalXrpcCall.apply(this, args);
-};
-
 // Function to check session validity
 function checkSessionValidity() {
 
@@ -89,6 +78,9 @@ const MAX_FAILURES = 5;
 // Keep track of processed notifications to avoid duplicates
 const processedNotifications = new Set<string>();
 
+// Add this near the top with other global variables
+const sinceTimestamp = new Date();
+
 async function main() {
   if (!BSKY_IDENTIFIER || !BSKY_PASSWORD) {
     logError('Missing required environment variables', 
@@ -110,12 +102,6 @@ async function loginToBluesky(): Promise<boolean> {
     console.log(`Attempting to log in as ${BSKY_IDENTIFIER}...`);
     await agent.login({ identifier: BSKY_IDENTIFIER!, password: BSKY_PASSWORD! });
     await sleep(3000);
-    // Check session properties
-    console.log('Session exists:', !!agent.session)
-    console.log('Session did:', agent.session?.did)
-    console.log('Session handle:', agent.session?.handle)
-    console.log('Access JWT exists:', !!agent.session?.accessJwt)
-    console.log('Refresh JWT exists:', !!agent.session?.refreshJwt)
 
     // Run the check
     checkSessionValidity();
@@ -242,43 +228,37 @@ async function getAllMentionNotifications(): Promise<Notification[]> {
   let cursor: string | undefined = undefined;
   
   try {
-    // Loop until we've processed all pages (or up to a reasonable limit)
     let pageCount = 0;
-    const MAX_PAGES = 3; // Limit to prevent excessive API calls
+    const MAX_PAGES = 3;
     
     do {
-      // Get notifications with a filter for mentions
+      // Add since parameter to only get new notifications
       const response = await agent.listNotifications({
-        limit: 100, // Maximum limit to reduce API calls
+        limit: 100,
         cursor: cursor,
       });
       
-      // Filter only mentions from the response
+      // Filter mentions from the response
       const mentions = response.data.notifications.filter(
-        notification => notification.reason === 'mention'
+        notification => 
+          notification.reason === 'mention' && 
+          new Date(notification.indexedAt) > sinceTimestamp
       );
-      
-      // Add to our collection
+            
       allMentions = [...allMentions, ...mentions];
-      
-      // Update cursor for next page
       cursor = response.data.cursor;
       
-      // Mark notifications as read if we have results
+      // Mark notifications as read
       if (response.data.notifications.length > 0) {
         const mostRecentTimestamp = response.data.notifications[0].indexedAt;
         try {
           await agent.updateSeenNotifications(mostRecentTimestamp);
         } catch (markError) {
           logError('Failed to mark notifications as read', markError);
-          // Continue anyway, non-critical error
         }
       }
       
-      // Increment page counter
       pageCount++;
-      
-      // Exit if there are no more pages or we've reached our limit
       if (!cursor || pageCount >= MAX_PAGES) break;
       
     } while (true);
@@ -286,13 +266,12 @@ async function getAllMentionNotifications(): Promise<Notification[]> {
     return allMentions;
   } catch (err) {
     logError('Error fetching all mentions', err);
-    return []; // Return empty array on error
+    return [];
   }
 }
 
 // Placeholder for actual tipping functionality
 async function processTip(from: string, to: string, amount: string): Promise<void> {
-  // Simple output of the tip details
   console.log(`PROCESSING: ${amount} from @${from} to @${to}`);
   try {
     // Truncate identifiers to 31 characters to fit in bytes32
@@ -303,7 +282,10 @@ async function processTip(from: string, to: string, amount: string): Promise<voi
     const fromBytes = ethers.encodeBytes32String(truncatedFrom);
     const toBytes = ethers.encodeBytes32String(truncatedTo);
     
-    const result = await tipContract.tip(fromBytes, toBytes, amount);
+    // Convert the amount to Wei before sending to contract
+    const amountInWei = ethers.parseEther(amount);
+    
+    const result = await tipContract.tip(fromBytes, toBytes, amountInWei);
     console.log(JSON.stringify(result));
   } catch (err) {
     console.log('Error processing tip', err);

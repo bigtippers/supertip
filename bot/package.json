@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "NODE_DEBUG=http,https node dist/bot/index.js",
+    "start": "node dist/bot/index.js",
     "dev": "tsc -w & node --watch dist/bot/index.js"
   },
   "keywords": [],
