@@ -183,7 +183,7 @@ See [Intro](#supertip).
 
 See [Technical Details](#technical-details).
 
-6. [ ] Include a link to the Canva slides used in the presentation (including a slide on your team, problem, solution etc). You must use Canva for your presentation (yes, this is a requirement).
+6. [X] Include a link to the Canva slides used in the presentation (including a slide on your team, problem, solution etc). You must use Canva for your presentation (yes, this is a requirement).
 
 See [Presentation](#presentation)
 
