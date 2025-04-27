@@ -197,7 +197,7 @@ See [Presentation](#presentation)
 
 8. [ ] (For coding submissions) Include a clear README on your GitHub repo explaining how your project works. This README must include:
 
-    1. [ ] A demo video - See [Demo Video](#demo-video)
+    1. [X] A demo video - See [Demo Video](#demo-video)
 
     2. [X] Screenshots of your UI - See [Screenshots](#screenshots)
 
