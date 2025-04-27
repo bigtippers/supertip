@@ -1,20 +1,20 @@
-![supertip](https://github.com/user-attachments/assets/e05f27c8-06a6-4e13-a558-0c9cc7de7780)
+![Tippin' Dots](https://github.com/user-attachments/assets/e05f27c8-06a6-4e13-a558-0c9cc7de7780)
 
-# SuperTip by the BigTippers
+# Tippin' Dots by the BigTippers
 
-This is the source repository for the April 2025 Harvard EasyA Hackathon submission of the Supertip project by the Bigtippers.
+This is the source repository for the April 2025 Harvard EasyA Hackathon submission of the Tippin' Dots project by the Bigtippers.
 
-Supertip brings tipping token functionality to **<u>any social media supporting decentralized identities</u>** (DIDs). 
+Tippin' Dots brings tipping token functionality to **<u>any social media supporting decentralized identities</u>** (DIDs). 
 Tipping tokens allow users to send small "tips" in the token currency to their favorite creators, 
 allowing for micropayments and providing monetization options for creators beyond those provided by the traditional advertising model. 
 Tipping creates a more rich and interactive experience for audiences by creating direct financial connections and incentives with creators.
 
-Unlike platform-specific solutions, Supertip works across the growing ecosystem of decentralized social networks, 
+Unlike platform-specific solutions, Tippin' Dots works across the growing ecosystem of decentralized social networks, 
 including [Bluesky](https://bsky.app) and [Frequency](https://frequency.xyz). Inspired by the innovative
 [open tipping tokens protocol](https://github.com/degen-token/DIPs/blob/main/dip-0002.md), our implementation extends these 
 capabilities to create a unified tipping experience regardless of where content appears.
 
-Supertip keeps users *inside of their own ecosystem*, using replies and direct messages inside of the apps they already
+Tippin' Dots keeps users *inside of their own ecosystem*, using replies and direct messages inside of the apps they already
 know and love to send tips and run tipping campaigns. Our approach avoids the "activation energy" problem entirely for users to 
 participate. They only need to use specialized interfaces to fund and withdraw from their tipping accounts.
 
@@ -31,8 +31,8 @@ Our smart contract is designed to be extended to work with different types of DI
 different type of DID. The contract lazily maps those DIDs to crypto wallets when users if users choose to deposit or withdraw funds. Because both
 Bluesky and Frequency have similar DID functionalities, the path to complete full signature verification is similarly direct.
 
-We believe that Supertip can help creators build sustainable income streams directly from their most engaged fans that eliminate all middlement,
-while audiences gain new ways to recognize and reward exceptional content. Supertip builds a more connected, creator-friendly web where value
+We believe that Tippin' Dots can help creators build sustainable income streams directly from their most engaged fans that eliminate all middlement,
+while audiences gain new ways to recognize and reward exceptional content. Tippin' Dots builds a more connected, creator-friendly web where value
 flows to those who truly deserve it.
 
 ## Demo Video
@@ -150,7 +150,7 @@ that most other EVM chains (and definitely cheaper than other chains of similar 
 
 [Presentation Video]()
 
-[Presentation Slides on Canva](https://www.canva.com/design/DAGl1eQq_CI/4wToPtphpiOq3KR9yAp3_w/edit)
+[Presentation Slides on Canva](https://www.canva.com/design/DAGlyma_LwA/wz8Ip1qao2xrSLXyuOOzUw/view?utm_content=DAGlyma_LwA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbcb4acd01b)
 
 
 # Submission requirements ✅-List
@@ -171,13 +171,13 @@ Released under [AGPLv3.0 or later](https://github.com/bigtippers/supertip/blob/m
 
 3. [X] Include a short summary (<150 chars)
 
-Supertip brings token tipping to **<u>any social media supporting decentralized identities</u>**. 
+Tippin' Dots brings token tipping to **<u>any social media supporting decentralized identities</u>**. 
 
-See [Intro](#supertip) for more.
+See [Intro](#tippin-dots) for more.
 
 4. [X] Include a full description (the problems it solves, how Polkadot was used to achieve it)
 
-See [Intro](#supertip).
+See [Intro](#tippin-dots).
 
 5. [X] Include a technical description (what SDKs were used, and what features of Polkadot made this uniquely possible)
 
