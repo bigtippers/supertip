@@ -6,6 +6,8 @@ import { ethersProvider } from '../lib/ethersProvider';
 import { DepositModal } from '../components/DepositModal';
 import { RegisterModal } from '../components/RegisterModal';
 import { WithdrawModal } from '../components/WithdrawModal';
+import { TipModal } from '../components/TipModal';
+import { blueskyAuth } from '../lib/bluesky';
 
 interface IdentifierBalance {
   identifier: string;
@@ -18,6 +20,7 @@ export function AccountPage() {
   const [isDepositModalOpen, setIsDepositModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isWithdrawModalOpen, setIsWithdrawModalOpen] = useState(false);
+  const [isTipModalOpen, setIsTipModalOpen] = useState(false);
   const [signer, setSigner] = useState<ethers.Signer | null>(null);
   const [isManagerOrOwner, setIsManagerOrOwner] = useState(false);
 
@@ -126,7 +129,7 @@ export function AccountPage() {
 
       <div className="flex flex-col gap-4 w-full max-w-xs">
         <button
-          onClick={() => {/* TODO: Implement Bluesky sign in */}}
+          onClick={() => blueskyAuth.initiateLogin()}
           className="!bg-[#0085ff] text-white px-6 py-3 rounded-lg hover:!bg-blue-600 transition-colors flex items-center justify-center gap-2 flex-1"
         >
           Sign in with Bluesky
@@ -162,10 +165,10 @@ export function AccountPage() {
         </button>
         
         <button 
-          onClick={() => {/* Will handle modal */}}
+          onClick={() => setIsTipModalOpen(true)}
           className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
         >
-          Tip
+          Send Tip
         </button>
       </div>
 
@@ -198,6 +201,12 @@ export function AccountPage() {
           <RegisterModal
             isOpen={isRegisterModalOpen}
             onClose={() => setIsRegisterModalOpen(false)}
+            onSuccess={refreshBalances}
+            signer={signer}
+          />
+          <TipModal
+            isOpen={isTipModalOpen}
+            onClose={() => setIsTipModalOpen(false)}
             onSuccess={refreshBalances}
             signer={signer}
           />
