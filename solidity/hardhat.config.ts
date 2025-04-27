@@ -7,18 +7,13 @@ dotenv.config();
 // Import all tasks
 import "./tasks/register";
 
-
-if (!process.env.MANAGER_PRIVATE_KEY) {
-  throw new Error("MANAGER_PRIVATE_KEY not set in .env");
-}
-
 const config: HardhatUserConfig = {
   solidity: "0.8.28",
   networks: {
     westend: {
       url: "https://westend-asset-hub-eth-rpc.polkadot.io",
       chainId: 420420421, // Updated to match the actual Westend Asset Hub chain ID
-      accounts: [process.env.MANAGER_PRIVATE_KEY],
+      accounts: [process.env.MANAGER_PRIVATE_KEY || ""],
       gas: 30000000,          // Set maximum gas limit
       gasPrice: "auto"        // Let the network determine the gas price
     }
