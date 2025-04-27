@@ -37,6 +37,11 @@ flows to those who truly deserve it.
 
 ## Demo Video
 
+[![Watch the video](https://img.youtube.com/vi/9gQXEzlPyBc/maxresdefault.jpg)](https://youtu.be/9gQXEzlPyBc)
+
+
+https://www.youtube.com/watch?v=9gQXEzlPyBc
+
 ## Screenshots
 
 ### Tipping!
