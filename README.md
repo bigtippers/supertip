@@ -136,7 +136,7 @@ We believe, except for signature checking, that the `Tip.sol` smart contract can
 3. Supports tipping between users directly as well as via the `owner` and `manager` roles.
 4. Role-based access control (`owner` and one or more `managers`).
 5. Ability to add and remove `managers` and ability to transfer ownership.
-6. Ability for users to transfer to new wallets. Managers lose the ability to set wallet mappings after a user asserts ownership.
+6. Ability for users to transfer to new wallets. **Managers lose the ability to set wallet mappings after a user asserts ownership.**
 7. Proper security features like reentrancy protection.
 8. Comprehensive event emissions for all important transactions.
 
@@ -202,8 +202,7 @@ See [Presentation](#presentation)
 
     5. [X] Block explorer link for deployed smart contract on Asset Hub - Deployed (via REMIX): [https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0x888175972F6570894e7CA8F1cAe817047c9Ba835](https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0x888175972F6570894e7CA8F1cAe817047c9Ba835)
 
-
-- **PRESENTING STRUCTURE** | Follow this structure when presenting:
+**PRESENTING STRUCTURE** | Follow this structure when presenting:
     1. First 30 seconds for each team member to introduce yourselves (which employer/university you’re from, which year, what you’re majoring in etc). **Make sure you have a team slide!**
     
     2. Next 30 seconds to explain the problem you’re solving
@@ -220,5 +219,3 @@ See [Presentation](#presentation)
     
     7. Final 30 seconds on future roadmap and what you’ll do next
     - Feasibility: The practicality of implementing the solution and the clarity of the implementation plan.
-
-Technical:
