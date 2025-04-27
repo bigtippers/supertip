@@ -39,30 +39,97 @@ flows to those who truly deserve it.
 
 ## Technical Details
 
+<img width="757" alt="Screenshot 2025-04-27 at 7 40 02 AM" src="https://github.com/user-attachments/assets/9035fe49-de3c-4a48-bab9-cb5f180936c9" />
+
+Users interact through the web UI
+Social media interactions are processed by the bot
+All financial transactions are handled by the smart contract
+
 ### app.bigtippers.net UI
+
+A React application using Vite, React Router, and Tailwind CSS
+
+Has two main pages:
+
+HomePage: Handles wallet connection and initial user interaction
+
+AccountPage: Manages account operations with modals for deposit, withdraw, register, and tip actions
+
+Uses ethers.js to interact with the Westend Asset Hub blockchain
+
+Responsive design with both light/dark mode support
+
+The project appears to be set up for deployment on Netlify with automatic build processes that include compiling the smart contracts before building the frontend.
+
+Initial Wallet Connection ( src/lib/ethersProvider.ts):
+src/lib
+import { BrowserProvider } from "ethers";
+export const ethersProvider = window.ethereum ? new BrowserProvider(window.ethereum) : null;
+Wallet Connection Flow ( src/pages/HomePage.tsx):
+Checks for MetaMask presence
+Switches to Asset-Hub Westend Testnet (chainId: 420420421)
+Adds the network if not present
+Requests account access
+Navigates to account page on success
+Account Operations ( src/pages/AccountPage.tsx):
+Initializes signer: const signer = await ethersProvider.getSigner()
+Fetches wallet balance: ethersProvider.getBalance(address)
+Loads identifier balances from contract
+Manages multiple modal components for different operations
+Contract Interactions through modals:
+Deposit ( src/components/DepositModal.tsx):
+
+Loads user's identifiers
+Converts amounts to Wei: ethers.parseEther(amount)
+Calls contract's deposit function with fees
+Withdraw ( src/components/WithdrawModal.tsx):
+
+Loads available identifiers
+Converts identifier to bytes32: ethers.encodeBytes32String(selectedIdentifier)
+Handles withdrawal with fees
+Register ( src/components/RegisterModal.tsx):
+
+Validates wallet address: ethers.isAddress(walletAddress)
+Converts identifier to bytes32
+Registers identifier-wallet mapping
+Tip ( src/components/TipModal.tsx):
+
+Loads sender's identifiers
+Converts both identifiers to bytes32
+Processes tip with amount in Wei
+
 
 ### Monitor Bot
 
+In the `bot` folder.
+
+A Bluesky bot that monitors mentions for tip commands
+Key functionalities:
+Watches for /tip [amount] commands in mentions
+Processes /register [wallet] commands for wallet registration
+Automatically marks notifications as read
+Implements robust error handling and auto-recovery
+Uses pagination to handle multiple pages of notifications
+Connects to both Bluesky API and the smart contract
+Runs continuously with automatic restart capability via start.sh
+
 ### Smart Contract Details
+
+Manages the core tipping functionality on the Westend Asset Hub chain
+Key features:
+Maps social media identifiers to wallet addresses
+Handles deposits and withdrawals with configurable fees
+Supports tipping between users
+Role-based access control (owner and managers)
+Security features like reentrancy protection
+Deployed on Westend Asset Hub (chainId: 420420421)
+Includes comprehensive event logging for transactions
 
 ## Presentation
 
 [Presentation Video]()
 
 [Presentation Slides on Canva]()
-
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
 
 # Submission requirements ✅-List
