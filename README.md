@@ -150,7 +150,7 @@ that most other EVM chains (and definitely cheaper than other chains of similar 
 
 [Presentation Video]()
 
-[Presentation Slides on Canva]()
+[Presentation Slides on Canva](https://www.canva.com/design/DAGl1eQq_CI/4wToPtphpiOq3KR9yAp3_w/edit)
 
 
 # Submission requirements ✅-List
@@ -194,7 +194,7 @@ See [Presentation](#presentation)
 
     1. [ ] A demo video - See [Demo Video](#demo-video)
 
-    2. [ ] Screenshots of your UI - See [Screenshots](#screenshots)
+    2. [X] Screenshots of your UI - See [Screenshots](#screenshots)
 
     3. [X] Description of how your smart contract works - See [Smart Contract Details](#smart-contract-details)
 
