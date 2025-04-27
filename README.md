@@ -148,7 +148,7 @@ We believe, except for signature checking, that the `Tip.sol` smart contract can
 We deployed on the Westend Asset Hub (chainId: 420420421) via the REMIX client provided by polkadot.  
 We can implement per network DID signature checks by adding a single function, e.g., `registerWithBlueSky` function 
 which performs that check. We believe it is possible to perform the check using the existing built-ins precompiles and, 
-given the superior efficient of the PolkaVM system, that our implementation will likely be as cheap or cheaper 
+given the superior efficiency of the PolkaVM system, that our implementation will likely be as cheap or cheaper 
 that most other EVM chains (and definitely cheaper than other chains of similar levels of decentralization!). 
 
 ## Presentation
