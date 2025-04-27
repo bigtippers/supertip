@@ -1,5 +1,5 @@
 [build]
-  command = "bun run build"
+  command = "cd solidity && bun install && cd .. && bun run prebuid && bun run build"
   publish = "dist"
 
 [[redirects]]

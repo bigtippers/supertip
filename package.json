@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "prebuild": "cd solidity && npx hardhat compile",
     "build": "vite build",
+    "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
   },
