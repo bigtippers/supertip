@@ -8,6 +8,7 @@ import { RegisterModal } from '../components/RegisterModal';
 import { WithdrawModal } from '../components/WithdrawModal';
 import { TipModal } from '../components/TipModal';
 import { blueskyAuth } from '../lib/bluesky';
+import { AddManagerModal } from '../components/AddManagerModal';
 
 interface IdentifierBalance {
   identifier: string;
@@ -23,6 +24,7 @@ export function AccountPage() {
   const [isTipModalOpen, setIsTipModalOpen] = useState(false);
   const [signer, setSigner] = useState<ethers.Signer | null>(null);
   const [isManagerOrOwner, setIsManagerOrOwner] = useState(false);
+  const [isAddManagerModalOpen, setIsAddManagerModalOpen] = useState(false);
 
   useEffect(() => {
     const initializeSigner = async () => {
@@ -175,12 +177,20 @@ export function AccountPage() {
       {isManagerOrOwner && (
         <div className="mt-8 w-full max-w-xs">
           <h2 className="text-xl font-semibold mb-4 text-center">Manager Controls</h2>
-          <button
-            onClick={() => setIsRegisterModalOpen(true)}
-            className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
-          >
-            Register Identifier
-          </button>
+          <div className="flex flex-col gap-4">
+            <button
+              onClick={() => setIsRegisterModalOpen(true)}
+              className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              Register Identifier
+            </button>
+            <button
+              onClick={() => setIsAddManagerModalOpen(true)}
+              className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              Add Manager
+            </button>
+          </div>
         </div>
       )}
 
@@ -207,6 +217,12 @@ export function AccountPage() {
           <TipModal
             isOpen={isTipModalOpen}
             onClose={() => setIsTipModalOpen(false)}
+            onSuccess={refreshBalances}
+            signer={signer}
+          />
+          <AddManagerModal
+            isOpen={isAddManagerModalOpen}
+            onClose={() => setIsAddManagerModalOpen(false)}
             onSuccess={refreshBalances}
             signer={signer}
           />
