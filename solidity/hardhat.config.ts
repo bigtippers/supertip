@@ -7,13 +7,20 @@ dotenv.config();
 // Import all tasks
 import "./tasks/register";
 
+// Dummy private key for development/CI - DO NOT use this in production!
+const DUMMY_PRIVATE_KEY = "0000000000000000000000000000000000000000000000000000000000000001";
+
+if (!process.env.MANAGER_PRIVATE_KEY) {
+  console.warn("Warning: MANAGER_PRIVATE_KEY not set in .env, using dummy key for build");
+}
+
 const config: HardhatUserConfig = {
   solidity: "0.8.28",
   networks: {
     westend: {
       url: "https://westend-asset-hub-eth-rpc.polkadot.io",
       chainId: 420420421, // Updated to match the actual Westend Asset Hub chain ID
-      accounts: [process.env.MANAGER_PRIVATE_KEY || ""],
+      accounts: [process.env.MANAGER_PRIVATE_KEY || DUMMY_PRIVATE_KEY],
       gas: 30000000,          // Set maximum gas limit
       gasPrice: "auto"        // Let the network determine the gas price
     }
