@@ -160,7 +160,7 @@ See [Intro](#supertip) for more.
 
 See [Intro](#supertip).
 
-5. [ ] Include a technical description (what SDKs were used, and what features of Polkadot made this uniquely possible)
+5. [X] Include a technical description (what SDKs were used, and what features of Polkadot made this uniquely possible)
 
 See [Technical Details](#technical-details).
 
@@ -177,7 +177,7 @@ See [Presentation](#presentation)
 
     2. [ ] Screenshots of your UI - See [Screenshots](#screenshots)
 
-    3. [ ] Description of how your smart contract works - See [Smart Contract Details](#smart-contract-details)
+    3. [X] Description of how your smart contract works - See [Smart Contract Details](#smart-contract-details)
 
     4. [ ] A video with audio (e.g. a Loom video [like this](https://youtu.be/ZLKR4zE1o6U?si=6na7139wlVNkmJRa)) explaining how your project works, how the GitHub repo is structured, a demo of everything working etc. This is vital, so that the judges can review your project properly. Make sure you explain clearly how you satisfied point 7 above. This is a great example of a winning Polkadot project’s README: https://github.com/jjjutla/melodot. Bonus points for if your video is well-edited! - See [Presentation](#presentation)
 
