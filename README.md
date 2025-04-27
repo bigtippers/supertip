@@ -153,7 +153,10 @@ that most other EVM chains (and definitely cheaper than other chains of similar 
 
 ## Presentation
 
-[Presentation Video]()
+[Presentation Video Part 1](https://www.loom.com/share/b49a76a6b17e47bf93b5b6a47cd72ca0?sid=13a8dba5-b244-4e04-b1ee-00e28eef097f)
+[Presentation Video Part 2](https://www.loom.com/share/5b0c8134f5fe4e01b6fd7cec1ec1a5fa?sid=9a732f9b-29a9-427e-a625-307fe10d0685)
+[Presentation Video Part 3](https://www.loom.com/share/e29bbd4e74544383923a1c174f7b25e5?sid=77d41919-6dfc-4eae-988b-0d8e799e7ae2)
+
 
 [Presentation Slides on Canva](https://www.canva.com/design/DAGlyma_LwA/wz8Ip1qao2xrSLXyuOOzUw/view?utm_content=DAGlyma_LwA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbcb4acd01b)
 
@@ -195,7 +198,7 @@ See [Presentation](#presentation)
 7. [X] (For coding submissions) Have a custom (not boilerplate) smart contract on Polkadot Asset Hub (and committed to your GitHub repo). All of this must be fully-functioning, as evidenced in a demo video on your README (see point 8 below).
 
 
-8. [ ] (For coding submissions) Include a clear README on your GitHub repo explaining how your project works. This README must include:
+8. [X] (For coding submissions) Include a clear README on your GitHub repo explaining how your project works. This README must include:
 
     1. [X] A demo video - See [Demo Video](#demo-video)
 
@@ -203,24 +206,7 @@ See [Presentation](#presentation)
 
     3. [X] Description of how your smart contract works - See [Smart Contract Details](#smart-contract-details)
 
-    4. [ ] A video with audio (e.g. a Loom video [like this](https://youtu.be/ZLKR4zE1o6U?si=6na7139wlVNkmJRa)) explaining how your project works, how the GitHub repo is structured, a demo of everything working etc. This is vital, so that the judges can review your project properly. Make sure you explain clearly how you satisfied point 7 above. This is a great example of a winning Polkadot project’s README: https://github.com/jjjutla/melodot. Bonus points for if your video is well-edited! - See [Presentation](#presentation)
+    4. [X] A video with audio (e.g. a Loom video [like this](https://youtu.be/ZLKR4zE1o6U?si=6na7139wlVNkmJRa)) explaining how your project works, how the GitHub repo is structured, a demo of everything working etc. This is vital, so that the judges can review your project properly. Make sure you explain clearly how you satisfied point 7 above. This is a great example of a winning Polkadot project’s README: https://github.com/jjjutla/melodot. Bonus points for if your video is well-edited! - See [Presentation](#presentation)
 
     5. [X] Block explorer link for deployed smart contract on Asset Hub - Deployed (via REMIX): [https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0x888175972F6570894e7CA8F1cAe817047c9Ba835](https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0x888175972F6570894e7CA8F1cAe817047c9Ba835)
 
-**PRESENTING STRUCTURE** | Follow this structure when presenting:
-    1. First 30 seconds for each team member to introduce yourselves (which employer/university you’re from, which year, what you’re majoring in etc). **Make sure you have a team slide!**
-    
-    2. Next 30 seconds to explain the problem you’re solving
-    
-    3. Next 30 seconds to explain your solution and grand vision - show off how big this can get
-  - Innovation and Originality: The novelty of the solution and its potential to disrupt or significantly improve upon existing services.
-  - Impact Potential: The applicability and scalability of the solution in real-world scenarios, including its potential for adoption and the breadth of its impact on the target market or sector.
-
-    5. Next 30 seconds showing off your demo - show off how much you achieved!
-  - Usability and Design: The application's user experience and interface design, ensuring accessibility and ease of use for its intended audience.
-
-    6. Next 30 seconds explaining how you used Polkadot in your project (For coding submissions) Technical Implementation: The robustness, security, and efficiency of the application’s codebase. Proper use of smart contracts and adherence to best practices in dApp development will be crucial.
-    - Use of the Blockchain: Effective use of smart contracts on Polkadot Asset Hub in the solution, demonstrating an understanding of their benefits and limitations.
-    
-    7. Final 30 seconds on future roadmap and what you’ll do next
-    - Feasibility: The practicality of implementing the solution and the clarity of the implementation plan.
