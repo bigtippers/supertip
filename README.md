@@ -1,4 +1,7 @@
-# supertip
+
+/![supertip](https://github.com/user-attachments/assets/e05f27c8-06a6-4e13-a558-0c9cc7de7780)
+
+# SuperTip by the BigTippers
 
 This is the source repository for the April 2025 Harvard EasyA Hackathon submission of the Supertip project by the Bigtippers.
 
@@ -21,7 +24,7 @@ centralized authorities - instead, a cryptographic proof can be independently ve
 is extended directly to a smart contract in our model. Allowing users to control ownership and secure their tipping pools even without
 a pre-established cryptographic wallet.
 
-In our implementation, we used Polkadot's smart contract functionality to integrate with Bluesky, with plans for Frequency that fell short.
+In our implementation, we used Polkadot's smart contract functionality to integrate with Bluesky, with additional plans for Frequency.
 The demo shows the entire UX from tipping someone to registering a wallet and withdrawing funds, with additional UX (tipping pools, automated rewards distributions, etc)
 being relatively straightforward to implement in the current model without changing the underlying smart contract as currently implemented.
 
